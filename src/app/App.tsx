@@ -19,7 +19,7 @@ function App() {
     },
     {
       id: 3,
-      imageUrl: 'https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=1080&auto=format&fit=crop',
+      imageUrl: 'https://www.geckoboard.com/dashboard-examples/finance/',
       title: 'Moliya Boshqaruv Paneli',
       tags: ['Dashboard', 'Fintech'],
     },
@@ -37,7 +37,7 @@ function App() {
     },
     {
       id: 6,
-      imageUrl: 'https://images.unsplash.com/photo-1526367790999-0150786486a9?q=80&w=1080&auto=format&fit=crop',
+      imageUrl: 'https://zeew.eu/five-essential-delivery-tips-for-small-businesses-to-boost-revenue/',
       title: 'Taom Yetkazish Servisi',
       tags: ['Mobil Ilova', 'Restoran'],
     },
