@@ -520,7 +520,7 @@ export default function App() {
 
       {/* NAV */}
       <nav style={{ boxShadow: scrolled ? "0 2px 24px rgba(0,0,0,0.07)" : "none" }}>
-        <a href="#" className="nav-logo">Jane Doe</a>
+        <a href="#" className="nav-logo">Usmonov Rayimbek</a>
         <ul className="nav-links">
           <li><a href="#about">Men haqimda</a></li>
           <li><a href="#works">Ishlarim</a></li>
@@ -532,9 +532,9 @@ export default function App() {
       {/* HERO */}
       <section className="hero">
         <div className="hero-left">
-          <span className="hero-tag fade-up">Frilanser sifatida band bo'lish mumkin</span>
+          <span className="hero-tag fade-up">Frilanserlik qilib g'oyalarni real loyiahag aylantiraman.</span>
           <h1 className="hero-title fade-up delay-1">
-            Insonlarni <em>maftun</em><br />qiluvchi raqamli<br />tajribalar
+            Insonlarni <em>maftun</em><br />qiluvchi <br />tajribalar
           </h1>
           <p className="hero-desc fade-up delay-2">
             Vizual mahorat va xulq-atvor psixologiyasini birlashtirgan UI/UX dizayner —
@@ -563,8 +563,8 @@ export default function App() {
           <div className="hero-img-wrap">
             <img
               className="hero-img"
-              src="https://images.unsplash.com/photo-1771072428050-1492abb58f4a?w=900&q=80"
-              alt="Jane Doe, UI/UX Designer"
+              src="https://sophia245.medium.com/everyday-italian-mens-casual-fashion-80644956b8c6"
+              alt="Usmonov Rayimbek, UI/UX Designer"
             />
             <div className="hero-badge">
               <div className="badge-dot" />
@@ -583,15 +583,13 @@ export default function App() {
       <section id="about" className="about">
         <div>
           <span className="about-label">Men Haqimda</span>
-          <h2 className="section-title">Dizayn —<br />mening tilim</h2>
+          <h2 className="section-title">Dizayn —<br />mening hayotim</h2>
         </div>
         <div>
           <p className="about-body">
-            Men ajoyib dizayn ko'zga ko'rinmaydi, deb ishonuvchi ishtiyoqli UI/UX dizayneriman.
-            Vizual dizayn va psixologiya bo'yicha bilimlarimni birlashtirgan holda, nafaqat
-            chiroyli, balki haqiqiy muammolarni hal qiladigan tajribalar yarataman.
-            Mening ishlarim startaplar va yirik brendlar uchun mobil ilovalar, veb platformalar
-            va dizayn tizimlarini o'z ichiga oladi.
+            Insonlar mazza qilib dam olishi uchun sevimli dizayn yarataman. 
+            Agar sizda real hayotga tadbiq qilinishi kerak bo'lgan g'oya bo'lsa bizga murojaat qiling.
+            Biz g'oyalarni real hayotga tatbiq qilamiz.
           </p>
           <div className="about-skills">
             {skills.map((s) => (
