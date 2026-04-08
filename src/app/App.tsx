@@ -563,7 +563,7 @@ export default function App() {
           <div className="hero-img-wrap">
             <img
               className="hero-img"
-              src="https://sophia245.medium.com/everyday-italian-mens-casual-fashion-80644956b8c6"
+              src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*zfpMRqOL7Yj5vAkU.jpg"
               alt="Usmonov Rayimbek, UI/UX Designer"
             />
             <div className="hero-badge">
