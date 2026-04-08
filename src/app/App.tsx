@@ -1,496 +1,688 @@
-import { Header } from './components/Header';
-
-import { Hero } from './components/Hero';
-
-import { ProjectCard } from './components/ProjectCard';
-
-import { ServiceCard } from './components/ServiceCard';
-
-
-
-function App() {
-
-  const projects = [
-
-    {
-
-      id: 1,
-
-      imageUrl: 'https://images.unsplash.com/photo-1713857297379-6fc26e70f581?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBtb2JpbGUlMjBhcHAlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzc1NTc2OTE2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-
-      title: 'HealthTrack App',
-
-      tags: ['Mobile App', 'Health & Fitness'],
-
-    },
-
-    {
-
-      id: 2,
-
-      imageUrl: 'https://images.unsplash.com/photo-1707836916010-3c4ad261936c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWJzaXRlJTIwZGVzaWduJTIwbW9ja3VwJTIwc2NyZWVufGVufDF8fHx8MTc3NTYwNTUxOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-
-      title: 'E-Commerce Platform',
-
-      tags: ['Web Design', 'E-Commerce'],
-
-    },
-
-    {
-
-      id: 3,
-
-      imageUrl: 'https://images.unsplash.com/photo-1576153192396-180ecef2a715?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1eCUyMGRlc2lnbiUyMHByb3RvdHlwZSUyMHdpcmVmcmFtZXxlbnwxfHx8fDE3NzU2MjA1Mjh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-
-      title: 'Finance Dashboard',
-
-      tags: ['Web Design', 'Dashboard'],
-
-    },
-
-    {
-
-      id: 4,
-
-      imageUrl: 'https://images.unsplash.com/photo-1767449441925-737379bc2c4d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkYXNoYm9hcmQlMjBpbnRlcmZhY2V8ZW58MXx8fHwxNzc1NTYyMzYzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-
-      title: 'Travel Booking App',
-
-      tags: ['Mobile App', 'Travel'],
-
-    },
-
-    {
-
-      id: 5,
-
-      imageUrl: 'https://images.unsplash.com/photo-1717996563514-e3519f9ef9f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBhcHBsaWNhdGlvbiUyMGRlc2lnbiUyMG1vZGVybnxlbnwxfHx8fDE3NzU2MjA1Mjl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-
-      title: 'SaaS Platform UI',
-
-      tags: ['Web Design', 'SaaS'],
-
-    },
-
-    {
-
-      id: 6,
-
-      imageUrl: 'https://images.unsplash.com/photo-1707836916010-3c4ad261936c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWJzaXRlJTIwZGVzaWduJTIwbW9ja3VwJTIwc2NyZWVufGVufDF8fHx8MTc3NTYwNTUxOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-
-      title: 'Food Delivery App',
-
-      tags: ['Mobile App', 'Food & Beverage'],
-
-    },
-
-  ];
-
-
-
-  const services = [
-
-    {
-
-      title: 'Visual Design',
-
-      description:
-
-        'Creating stunning, pixel-perfect interfaces that capture brand identity and engage users through thoughtful color, typography, and layout.',
-
-    },
-
-    {
-
-      title: 'Prototyping',
-
-      description:
-
-        'Building interactive prototypes to validate ideas, test user flows, and bring concepts to life before development begins.',
-
-    },
-
-    {
-
-      title: 'User Research',
-
-      description:
-
-        'Conducting in-depth research and usability testing to understand user needs, behaviors, and pain points for data-driven design decisions.',
-
-    },
-
-  ];
-
-
+import { useState, useEffect, useRef } from "react";
+
+const style = `
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --ink: #1C1917;
+    --accent: #C8A96E;
+    --muted: #78716C;
+    --white: #FEFEFE;
+    --border: rgba(28,25,23,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  .serif { font-family: 'Playfair Display', serif; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(245,240,232,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--muted);
+    text-decoration: none; letter-spacing: 0.5px; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-cta {
+    font-size: 13px; font-weight: 500;
+    padding: 10px 24px;
+    background: var(--ink); color: var(--cream);
+    border: none; border-radius: 100px; cursor: pointer;
+    letter-spacing: 0.3px;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 120px 60px 80px;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-left { display: flex; flex-direction: column; gap: 32px; }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 500; color: var(--accent);
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 6vw, 80px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--ink);
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 17px; line-height: 1.75;
+    color: var(--muted); max-width: 440px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+
+  .btn-primary {
+    padding: 14px 32px; border-radius: 100px;
+    background: var(--ink); color: var(--cream);
+    font-size: 15px; font-weight: 500;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+
+  .btn-ghost {
+    padding: 14px 32px; border-radius: 100px;
+    background: transparent; color: var(--ink);
+    font-size: 15px; font-weight: 500;
+    border: 1.5px solid var(--border);
+    text-decoration: none; cursor: pointer;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 900;
+    color: var(--ink);
+  }
+
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  .hero-right {
+    position: relative;
+    display: flex; justify-content: flex-end;
+  }
+
+  .hero-img-wrap {
+    position: relative;
+    width: 440px; height: 560px;
+  }
+
+  .hero-img-wrap::before {
+    content: '';
+    position: absolute;
+    top: 20px; right: -20px;
+    width: 100%; height: 100%;
+    border: 2px solid var(--accent);
+    border-radius: 16px;
+    z-index: 0;
+  }
+
+  .hero-img {
+    position: relative; z-index: 1;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    filter: grayscale(20%);
+  }
+
+  .hero-badge {
+    position: absolute;
+    bottom: -24px; left: -24px; z-index: 2;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .badge-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #22C55E;
+    box-shadow: 0 0 0 4px rgba(34,197,94,0.2);
+    flex-shrink: 0;
+  }
+
+  .badge-text { font-size: 13px; font-weight: 500; color: var(--ink); }
+  .badge-sub { font-size: 11px; color: var(--muted); }
+
+  /* ABOUT */
+  .about {
+    padding: 120px 60px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .about-label {
+    font-size: 12px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--accent);
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    color: var(--ink);
+    margin-top: 16px;
+  }
+
+  .about-body {
+    font-size: 18px; line-height: 1.8;
+    color: var(--muted);
+    max-width: 600px;
+  }
+
+  .about-skills {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 32px;
+  }
+
+  .skill-tag {
+    padding: 7px 16px; border-radius: 100px;
+    border: 1.5px solid var(--border);
+    font-size: 13px; font-weight: 500;
+    color: var(--ink); background: transparent;
+    transition: all 0.2s;
+  }
+  .skill-tag:hover {
+    background: var(--ink); color: var(--cream);
+    border-color: var(--ink);
+  }
+
+  /* WORKS */
+  .works {
+    padding: 80px 60px 120px;
+  }
+
+  .works-header {
+    display: flex; align-items: flex-end;
+    justify-content: space-between; margin-bottom: 56px;
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .project-card {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    group: true;
+  }
+
+  .project-card:nth-child(1) { grid-column: span 2; }
+
+  .project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  }
+
+  .project-img {
+    width: 100%; height: 260px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+  }
+  .project-card:nth-child(1) .project-img { height: 340px; }
+  .project-card:hover .project-img { transform: scale(1.03); }
+
+  .project-info {
+    padding: 20px 24px 24px;
+    display: flex; justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--ink); margin-bottom: 8px;
+  }
+
+  .project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .tag {
+    padding: 4px 10px; border-radius: 100px;
+    background: var(--cream);
+    font-size: 11px; font-weight: 500;
+    color: var(--muted); letter-spacing: 0.3px;
+  }
+
+  .project-arrow {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    color: var(--ink); font-size: 16px;
+    transition: all 0.2s;
+  }
+  .project-card:hover .project-arrow {
+    background: var(--ink); color: var(--cream);
+    border-color: var(--ink);
+  }
+
+  /* SERVICES */
+  .services {
+    padding: 80px 60px 120px;
+    background: var(--ink);
+  }
+
+  .services .about-label { color: var(--accent); }
+  .services .section-title { color: var(--cream); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 56px;
+    border: 2px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    padding: 48px 36px;
+    background: rgba(255,255,255,0.03);
+    border-right: 2px solid rgba(255,255,255,0.08);
+    transition: background 0.3s;
+  }
+  .service-card:last-child { border-right: none; }
+  .service-card:hover { background: rgba(200,169,110,0.08); }
+
+  .service-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; font-weight: 900;
+    color: var(--accent); opacity: 0.3;
+    margin-bottom: 24px;
+  }
+
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700;
+    color: var(--cream); margin-bottom: 16px;
+  }
+
+  .service-desc {
+    font-size: 15px; line-height: 1.75;
+    color: rgba(245,240,232,0.55);
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 120px 60px;
+    display: flex; flex-direction: column;
+    align-items: center; text-align: center;
+  }
+
+  .contact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 7vw, 90px);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -3px;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .contact-title em { font-style: italic; color: var(--accent); }
+
+  .contact-sub {
+    font-size: 18px; color: var(--muted);
+    max-width: 480px; line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .contact-email {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 4px;
+    transition: color 0.2s;
+  }
+  .contact-email:hover { color: var(--accent); }
+
+  .social-row {
+    display: flex; gap: 16px;
+    margin-top: 56px;
+  }
+
+  .social-btn {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 18px;
+    transition: all 0.2s; color: var(--ink);
+    text-decoration: none;
+  }
+  .social-btn:hover {
+    background: var(--ink); color: var(--cream);
+    border-color: var(--ink); transform: translateY(-3px);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 24px 60px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  footer p { font-size: 13px; color: var(--muted); }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px; background: var(--border);
+    margin: 0 60px;
+  }
+
+  /* FADE IN */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.8s ease forwards; }
+  .delay-1 { animation-delay: 0.15s; opacity: 0; }
+  .delay-2 { animation-delay: 0.3s; opacity: 0; }
+  .delay-3 { animation-delay: 0.45s; opacity: 0; }
+  .delay-4 { animation-delay: 0.6s; opacity: 0; }
+`;
+
+const projects = [
+  {
+    id: 1,
+    imageUrl: "https://images.unsplash.com/photo-1713857297379-6fc26e70f581?w=900&q=80",
+    title: "HealthTrack App",
+    tags: ["Mobile App", "Health & Fitness"],
+  },
+  {
+    id: 2,
+    imageUrl: "https://images.unsplash.com/photo-1707836916010-3c4ad261936c?w=900&q=80",
+    title: "E-Commerce Platform",
+    tags: ["Web Design", "E-Commerce"],
+  },
+  {
+    id: 3,
+    imageUrl: "https://images.unsplash.com/photo-1576153192396-180ecef2a715?w=900&q=80",
+    title: "Finance Dashboard",
+    tags: ["Web Design", "Dashboard"],
+  },
+  {
+    id: 4,
+    imageUrl: "https://images.unsplash.com/photo-1767449441925-737379bc2c4d?w=900&q=80",
+    title: "Travel Booking App",
+    tags: ["Mobile App", "Travel"],
+  },
+  {
+    id: 5,
+    imageUrl: "https://images.unsplash.com/photo-1717996563514-e3519f9ef9f7?w=900&q=80",
+    title: "SaaS Platform UI",
+    tags: ["Web Design", "SaaS"],
+  },
+  {
+    id: 6,
+    imageUrl: "https://images.unsplash.com/photo-1707836916010-3c4ad261936c?w=900&q=80",
+    title: "Food Delivery App",
+    tags: ["Mobile App", "Food & Beverage"],
+  },
+];
+
+const services = [
+  {
+    num: "01",
+    title: "Visual Design",
+    description:
+      "Creating stunning, pixel-perfect interfaces that capture brand identity and engage users through thoughtful color, typography, and layout.",
+  },
+  {
+    num: "02",
+    title: "Prototyping",
+    description:
+      "Building interactive prototypes to validate ideas, test user flows, and bring concepts to life before development begins.",
+  },
+  {
+    num: "03",
+    title: "User Research",
+    description:
+      "Conducting in-depth research and usability testing to understand user needs, behaviors, and pain points for data-driven decisions.",
+  },
+];
+
+const skills = ["Figma", "UX Strategy", "Design Systems", "User Research", "Prototyping", "Motion Design", "Accessibility", "Brand Identity"];
+
+export default function App() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
+    <>
+      <style>{style}</style>
 
-    <div
+      {/* NAV */}
+      <nav style={{ boxShadow: scrolled ? "0 2px 24px rgba(0,0,0,0.07)" : "none" }}>
+        <a href="#" className="nav-logo">Jane Doe</a>
+        <ul className="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#works">Works</a></li>
+          <li><a href="#services">Services</a></li>
+        </ul>
+        <a href="#contact" className="nav-cta">Let's Talk</a>
+      </nav>
 
-      className="min-h-screen"
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-left">
+          <span className="hero-tag fade-up">Available for freelance</span>
+          <h1 className="hero-title fade-up delay-1">
+            Crafting <em>digital</em><br />experiences<br />that matter
+          </h1>
+          <p className="hero-desc fade-up delay-2">
+            UI/UX Designer blending visual craft with behavioral psychology to build
+            products people love to use.
+          </p>
+          <div className="hero-actions fade-up delay-3">
+            <a href="#works" className="btn-primary">View Work</a>
+            <a href="#contact" className="btn-ghost">Get in Touch</a>
+          </div>
+          <div className="hero-stats fade-up delay-4">
+            <div>
+              <div className="stat-num">5+</div>
+              <div className="stat-label">Years Experience</div>
+            </div>
+            <div>
+              <div className="stat-num">40+</div>
+              <div className="stat-label">Projects Done</div>
+            </div>
+            <div>
+              <div className="stat-num">98%</div>
+              <div className="stat-label">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+        <div className="hero-right fade-up delay-2">
+          <div className="hero-img-wrap">
+            <img
+              className="hero-img"
+              src="https://images.unsplash.com/photo-1771072428050-1492abb58f4a?w=900&q=80"
+              alt="Jane Doe, UI/UX Designer"
+            />
+            <div className="hero-badge">
+              <div className="badge-dot" />
+              <div>
+                <div className="badge-text">Open to Work</div>
+                <div className="badge-sub">UI/UX Design roles</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      style={{
+      <div className="divider" />
 
-        backgroundColor: '#FAFAFA',
-
-        fontFamily: 'Inter, sans-serif',
-
-      }}
-
-    >
-
-      <Header />
-
-
-
-      {/* Hero Section */}
-
-      <div style={{ paddingTop: '80px' }}>
-
-        <Hero portraitUrl="https://images.unsplash.com/photo-1771072428050-1492abb58f4a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXNpZ25lciUyMHBvcnRyYWl0JTIwd29tYW58ZW58MXx8fHwxNzc1NjIwNTI3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" />
-
-      </div>
-
-
-
-      {/* About Section */}
-
-      <section id="about" className="py-24" style={{ padding: '96px 80px' }}>
-
-        <div className="max-w-4xl">
-
-          <h2 className="text-5xl font-bold mb-6" style={{ color: '#1A1A1A' }}>
-
-            About Me
-
-          </h2>
-
-          <p
-
-            className="text-xl leading-relaxed"
-
-            style={{ color: '#1A1A1A', opacity: 0.7 }}
-
-          >
-
+      {/* ABOUT */}
+      <section id="about" className="about">
+        <div>
+          <span className="about-label">About Me</span>
+          <h2 className="section-title">Design is<br />my language</h2>
+        </div>
+        <div>
+          <p className="about-body">
             I'm a passionate UI/UX designer who believes great design is invisible.
-
             With a background in both visual design and psychology, I create
-
-            experiences that not only look beautiful but also solve real problems
-
-            for real people. My work spans mobile apps, web platforms, and design
-
+            experiences that not only look beautiful but solve real problems for
+            real people. My work spans mobile apps, web platforms, and design
             systems for startups and established brands alike.
-
           </p>
-
-        </div>
-
-      </section>
-
-
-
-      {/* Projects Grid Section */}
-
-      <section id="works" className="py-24" style={{ padding: '96px 80px' }}>
-
-        <div className="mb-12">
-
-          <h2 className="text-5xl font-bold mb-4" style={{ color: '#1A1A1A' }}>
-
-            Selected Works
-
-          </h2>
-
-          <p className="text-xl" style={{ color: '#1A1A1A', opacity: 0.6 }}>
-
-            A showcase of my recent design projects
-
-          </p>
-
-        </div>
-
-
-
-        <div className="grid grid-cols-2 gap-8">
-
-          {projects.map((project) => (
-
-            <ProjectCard
-
-              key={project.id}
-
-              imageUrl={project.imageUrl}
-
-              title={project.title}
-
-              tags={project.tags}
-
-            />
-
-          ))}
-
-        </div>
-
-      </section>
-
-
-
-      {/* Services Section */}
-
-      <section id="services" className="py-24" style={{ padding: '96px 80px' }}>
-
-        <div className="mb-12">
-
-          <h2 className="text-5xl font-bold mb-4" style={{ color: '#1A1A1A' }}>
-
-            What I Do
-
-          </h2>
-
-          <p className="text-xl" style={{ color: '#1A1A1A', opacity: 0.6 }}>
-
-            My core competencies and design services
-
-          </p>
-
-        </div>
-
-
-
-        <div className="grid grid-cols-3 gap-8">
-
-          {services.map((service, index) => (
-
-            <ServiceCard
-
-              key={index}
-
-              title={service.title}
-
-              description={service.description}
-
-            />
-
-          ))}
-
-        </div>
-
-      </section>
-
-
-
-      {/* Contact & Footer Section */}
-
-      <section
-
-        id="contact"
-
-        className="py-24"
-
-        style={{ padding: '96px 80px', backgroundColor: 'white' }}
-
-      >
-
-        <div className="text-center space-y-8">
-
-          <h2 className="text-5xl font-bold" style={{ color: '#1A1A1A' }}>
-
-            Get in Touch
-
-          </h2>
-
-          <p className="text-xl max-w-2xl mx-auto" style={{ color: '#1A1A1A', opacity: 0.7 }}>
-
-            Have a project in mind or just want to chat about design? I'd love to
-
-            hear from you.
-
-          </p>
-
-
-
-          <div className="pt-4">
-
-            <a
-
-              href="mailto:hello@janedoe.design"
-
-              className="inline-block px-10 py-4 rounded-xl font-medium text-lg transition-all hover:shadow-lg hover:-translate-y-0.5"
-
-              style={{ backgroundColor: '#3B82F6', color: 'white' }}
-
-            >
-
-              hello@janedoe.design
-
-            </a>
-
+          <div className="about-skills">
+            {skills.map((s) => (
+              <span key={s} className="skill-tag">{s}</span>
+            ))}
           </div>
-
-
-
-          {/* Social Media Placeholders */}
-
-          <div className="flex justify-center gap-6 pt-8">
-
-            <div
-
-              className="w-12 h-12 rounded-full flex items-center justify-center border-2 cursor-pointer transition-all hover:scale-110"
-
-              style={{ borderColor: '#1A1A1A' }}
-
-              title="LinkedIn icon placeholder"
-
-            >
-
-              <div
-
-                className="border-2"
-
-                style={{
-
-                  width: '24px',
-
-                  height: '24px',
-
-                  borderColor: '#3B82F6',
-
-                  borderStyle: 'dashed',
-
-                  borderRadius: '4px',
-
-                }}
-
-              />
-
-            </div>
-
-            <div
-
-              className="w-12 h-12 rounded-full flex items-center justify-center border-2 cursor-pointer transition-all hover:scale-110"
-
-              style={{ borderColor: '#1A1A1A' }}
-
-              title="Dribbble icon placeholder"
-
-            >
-
-              <div
-
-                className="border-2"
-
-                style={{
-
-                  width: '24px',
-
-                  height: '24px',
-
-                  borderColor: '#3B82F6',
-
-                  borderStyle: 'dashed',
-
-                  borderRadius: '4px',
-
-                }}
-
-              />
-
-            </div>
-
-            <div
-
-              className="w-12 h-12 rounded-full flex items-center justify-center border-2 cursor-pointer transition-all hover:scale-110"
-
-              style={{ borderColor: '#1A1A1A' }}
-
-              title="Behance icon placeholder"
-
-            >
-
-              <div
-
-                className="border-2"
-
-                style={{
-
-                  width: '24px',
-
-                  height: '24px',
-
-                  borderColor: '#3B82F6',
-
-                  borderStyle: 'dashed',
-
-                  borderRadius: '4px',
-
-                }}
-
-              />
-
-            </div>
-
-            <div
-
-              className="w-12 h-12 rounded-full flex items-center justify-center border-2 cursor-pointer transition-all hover:scale-110"
-
-              style={{ borderColor: '#1A1A1A' }}
-
-              title="Twitter icon placeholder"
-
-            >
-
-              <div
-
-                className="border-2"
-
-                style={{
-
-                  width: '24px',
-
-                  height: '24px',
-
-                  borderColor: '#3B82F6',
-
-                  borderStyle: 'dashed',
-
-                  borderRadius: '4px',
-
-                }}
-
-              />
-
-            </div>
-
-          </div>
-
         </div>
-
-
-
-        {/* Footer */}
-
-        <div className="mt-24 pt-8 border-t" style={{ borderColor: '#1A1A1A', opacity: 0.1 }}>
-
-          <p className="text-center" style={{ color: '#1A1A1A', opacity: 0.5 }}>
-
-            © 2026 Jane Doe. All rights reserved.
-
-          </p>
-
-        </div>
-
       </section>
 
-    </div>
+      <div className="divider" />
 
+      {/* WORKS */}
+      <section id="works" className="works">
+        <div className="works-header">
+          <div>
+            <span className="about-label">Portfolio</span>
+            <h2 className="section-title" style={{ marginTop: "12px" }}>Selected Works</h2>
+          </div>
+          <a href="#contact" className="btn-ghost" style={{ flexShrink: 0 }}>All Projects →</a>
+        </div>
+        <div className="works-grid">
+          {projects.map((p) => (
+            <div key={p.id} className="project-card">
+              <div style={{ overflow: "hidden" }}>
+                <img className="project-img" src={p.imageUrl} alt={p.title} />
+              </div>
+              <div className="project-info">
+                <div>
+                  <div className="project-title">{p.title}</div>
+                  <div className="project-tags">
+                    {p.tags.map((t) => <span key={t} className="tag">{t}</span>)}
+                  </div>
+                </div>
+                <div className="project-arrow">↗</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services" className="services">
+        <span className="about-label">What I Do</span>
+        <h2 className="section-title" style={{ maxWidth: "400px", marginTop: "16px" }}>
+          My core<br />services
+        </h2>
+        <div className="services-grid">
+          {services.map((s) => (
+            <div key={s.num} className="service-card">
+              <div className="service-num">{s.num}</div>
+              <div className="service-title">{s.title}</div>
+              <p className="service-desc">{s.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="contact">
+        <span className="about-label" style={{ marginBottom: "24px" }}>Get in Touch</span>
+        <h2 className="contact-title">
+          Let's build<br />something <em>great</em>
+        </h2>
+        <p className="contact-sub">
+          Have a project in mind or just want to chat about design?
+          I'd love to hear from you.
+        </p>
+        <a href="mailto:hello@janedoe.design" className="contact-email">
+          hello@janedoe.design
+        </a>
+        <div className="social-row">
+          <a href="#" className="social-btn" title="LinkedIn">in</a>
+          <a href="#" className="social-btn" title="Dribbble">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"/>
+            </svg>
+          </a>
+          <a href="#" className="social-btn" title="Behance">Be</a>
+          <a href="#" className="social-btn" title="Twitter / X">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer>
+        <p>© 2026 Jane Doe. All rights reserved.</p>
+        <p>Designed & Built with ♥</p>
+      </footer>
+    </>
   );
-
 }
-
-
-
-export default App;
-
