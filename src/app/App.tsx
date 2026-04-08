@@ -657,8 +657,8 @@ export default function App() {
           Loyihangiz bormi yoki dizayn haqida suhbatlashmoqchimisiz?
           Sizdan xabar olishdan xursand bo'laman.
         </p>
-        <a href="mailto:hello@janedoe.design" className="contact-email">
-          hello@janedoe.design
+        <a href="mailto:usmonovrakhimbek@gmail.com" className="contact-email">
+          usmonovrakhimbek@gmail.com
         </a>
         <div className="social-row">
           <a href="#" className="social-btn" title="LinkedIn">in</a>
