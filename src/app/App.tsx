@@ -447,63 +447,63 @@ const projects = [
   {
     id: 1,
     imageUrl: "https://images.unsplash.com/photo-1713857297379-6fc26e70f581?w=900&q=80",
-    title: "HealthTrack App",
-    tags: ["Mobile App", "Health & Fitness"],
+    title: "SogʻliqTrack Ilovasi",
+    tags: ["Mobil Ilova", "Sog'liq & Sport"],
   },
   {
     id: 2,
     imageUrl: "https://images.unsplash.com/photo-1707836916010-3c4ad261936c?w=900&q=80",
-    title: "E-Commerce Platform",
-    tags: ["Web Design", "E-Commerce"],
+    title: "Elektron Tijorat Platforma",
+    tags: ["Veb Dizayn", "E-Tijorat"],
   },
   {
     id: 3,
     imageUrl: "https://images.unsplash.com/photo-1576153192396-180ecef2a715?w=900&q=80",
-    title: "Finance Dashboard",
-    tags: ["Web Design", "Dashboard"],
+    title: "Moliya Boshqaruv Paneli",
+    tags: ["Veb Dizayn", "Dashboard"],
   },
   {
     id: 4,
     imageUrl: "https://images.unsplash.com/photo-1767449441925-737379bc2c4d?w=900&q=80",
-    title: "Travel Booking App",
-    tags: ["Mobile App", "Travel"],
+    title: "Sayohat Bron Qilish Ilovasi",
+    tags: ["Mobil Ilova", "Sayohat"],
   },
   {
     id: 5,
     imageUrl: "https://images.unsplash.com/photo-1717996563514-e3519f9ef9f7?w=900&q=80",
-    title: "SaaS Platform UI",
-    tags: ["Web Design", "SaaS"],
+    title: "SaaS Platforma UI",
+    tags: ["Veb Dizayn", "SaaS"],
   },
   {
     id: 6,
     imageUrl: "https://images.unsplash.com/photo-1707836916010-3c4ad261936c?w=900&q=80",
-    title: "Food Delivery App",
-    tags: ["Mobile App", "Food & Beverage"],
+    title: "Ovqat Yetkazib Berish Ilovasi",
+    tags: ["Mobil Ilova", "Oziq-ovqat"],
   },
 ];
 
 const services = [
   {
     num: "01",
-    title: "Visual Design",
+    title: "Vizual Dizayn",
     description:
-      "Creating stunning, pixel-perfect interfaces that capture brand identity and engage users through thoughtful color, typography, and layout.",
+      "Brend identifikatsiyasini aks ettiruvchi va foydalanuvchilarni jalb qiluvchi ajoyib, piksel-aniq interfeyslar yaratish — rang, tipografiya va kompozitsiya orqali.",
   },
   {
     num: "02",
-    title: "Prototyping",
+    title: "Prototiplash",
     description:
-      "Building interactive prototypes to validate ideas, test user flows, and bring concepts to life before development begins.",
+      "G'oyalarni tekshirish, foydalanuvchi oqimlarini sinab ko'rish va ishlab chiqish boshlanishidan oldin kontseptsiyalarni hayotga tatbiq etish uchun interaktiv prototiplar yaratish.",
   },
   {
     num: "03",
-    title: "User Research",
+    title: "Foydalanuvchi Tadqiqoti",
     description:
-      "Conducting in-depth research and usability testing to understand user needs, behaviors, and pain points for data-driven decisions.",
+      "Ma'lumotlarga asoslangan dizayn qarorlar uchun foydalanuvchilarning ehtiyojlari, xatti-harakatlari va muammolarini tushunish maqsadida chuqur tadqiqot va qulaylik testlarini o'tkazish.",
   },
 ];
 
-const skills = ["Figma", "UX Strategy", "Design Systems", "User Research", "Prototyping", "Motion Design", "Accessibility", "Brand Identity"];
+const skills = ["Figma", "UX Strategiya", "Dizayn Tizimlari", "Foydalanuvchi Tadqiqoti", "Prototiplash", "Motion Dizayn", "Accessibility", "Brend Identifikatsiya"];
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -522,40 +522,40 @@ export default function App() {
       <nav style={{ boxShadow: scrolled ? "0 2px 24px rgba(0,0,0,0.07)" : "none" }}>
         <a href="#" className="nav-logo">Jane Doe</a>
         <ul className="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#works">Works</a></li>
-          <li><a href="#services">Services</a></li>
+          <li><a href="#about">Men haqimda</a></li>
+          <li><a href="#works">Ishlarim</a></li>
+          <li><a href="#services">Xizmatlar</a></li>
         </ul>
-        <a href="#contact" className="nav-cta">Let's Talk</a>
+        <a href="#contact" className="nav-cta">Bog'lanish</a>
       </nav>
 
       {/* HERO */}
       <section className="hero">
         <div className="hero-left">
-          <span className="hero-tag fade-up">Available for freelance</span>
+          <span className="hero-tag fade-up">Frilanser sifatida band bo'lish mumkin</span>
           <h1 className="hero-title fade-up delay-1">
-            Crafting <em>digital</em><br />experiences<br />that matter
+            Insonlarni <em>maftun</em><br />qiluvchi raqamli<br />tajribalar
           </h1>
           <p className="hero-desc fade-up delay-2">
-            UI/UX Designer blending visual craft with behavioral psychology to build
-            products people love to use.
+            Vizual mahorat va xulq-atvor psixologiyasini birlashtirgan UI/UX dizayner —
+            odamlar sevib ishlatiladigan mahsulotlar yarataman.
           </p>
           <div className="hero-actions fade-up delay-3">
-            <a href="#works" className="btn-primary">View Work</a>
-            <a href="#contact" className="btn-ghost">Get in Touch</a>
+            <a href="#works" className="btn-primary">Ishlarimni Ko'rish</a>
+            <a href="#contact" className="btn-ghost">Bog'lanish</a>
           </div>
           <div className="hero-stats fade-up delay-4">
             <div>
               <div className="stat-num">5+</div>
-              <div className="stat-label">Years Experience</div>
+              <div className="stat-label">Yillik Tajriba</div>
             </div>
             <div>
               <div className="stat-num">40+</div>
-              <div className="stat-label">Projects Done</div>
+              <div className="stat-label">Bajarilgan Loyiha</div>
             </div>
             <div>
               <div className="stat-num">98%</div>
-              <div className="stat-label">Client Satisfaction</div>
+              <div className="stat-label">Mijoz Mamnuniyati</div>
             </div>
           </div>
         </div>
@@ -569,8 +569,8 @@ export default function App() {
             <div className="hero-badge">
               <div className="badge-dot" />
               <div>
-                <div className="badge-text">Open to Work</div>
-                <div className="badge-sub">UI/UX Design roles</div>
+                <div className="badge-text">Ishga Tayyor</div>
+                <div className="badge-sub">UI/UX Dizayner lavozimi</div>
               </div>
             </div>
           </div>
@@ -582,16 +582,16 @@ export default function App() {
       {/* ABOUT */}
       <section id="about" className="about">
         <div>
-          <span className="about-label">About Me</span>
-          <h2 className="section-title">Design is<br />my language</h2>
+          <span className="about-label">Men Haqimda</span>
+          <h2 className="section-title">Dizayn —<br />mening tilim</h2>
         </div>
         <div>
           <p className="about-body">
-            I'm a passionate UI/UX designer who believes great design is invisible.
-            With a background in both visual design and psychology, I create
-            experiences that not only look beautiful but solve real problems for
-            real people. My work spans mobile apps, web platforms, and design
-            systems for startups and established brands alike.
+            Men ajoyib dizayn ko'zga ko'rinmaydi, deb ishonuvchi ishtiyoqli UI/UX dizayneriman.
+            Vizual dizayn va psixologiya bo'yicha bilimlarimni birlashtirgan holda, nafaqat
+            chiroyli, balki haqiqiy muammolarni hal qiladigan tajribalar yarataman.
+            Mening ishlarim startaplar va yirik brendlar uchun mobil ilovalar, veb platformalar
+            va dizayn tizimlarini o'z ichiga oladi.
           </p>
           <div className="about-skills">
             {skills.map((s) => (
@@ -608,9 +608,9 @@ export default function App() {
         <div className="works-header">
           <div>
             <span className="about-label">Portfolio</span>
-            <h2 className="section-title" style={{ marginTop: "12px" }}>Selected Works</h2>
+            <h2 className="section-title" style={{ marginTop: "12px" }}>Tanlangan Ishlar</h2>
           </div>
-          <a href="#contact" className="btn-ghost" style={{ flexShrink: 0 }}>All Projects →</a>
+          <a href="#contact" className="btn-ghost" style={{ flexShrink: 0 }}>Barcha Loyihalar →</a>
         </div>
         <div className="works-grid">
           {projects.map((p) => (
@@ -634,9 +634,9 @@ export default function App() {
 
       {/* SERVICES */}
       <section id="services" className="services">
-        <span className="about-label">What I Do</span>
+        <span className="about-label">Nima Qilaman</span>
         <h2 className="section-title" style={{ maxWidth: "400px", marginTop: "16px" }}>
-          My core<br />services
+          Asosiy<br />xizmatlarim
         </h2>
         <div className="services-grid">
           {services.map((s) => (
@@ -651,13 +651,13 @@ export default function App() {
 
       {/* CONTACT */}
       <section id="contact" className="contact">
-        <span className="about-label" style={{ marginBottom: "24px" }}>Get in Touch</span>
+        <span className="about-label" style={{ marginBottom: "24px" }}>Bog'lanish</span>
         <h2 className="contact-title">
-          Let's build<br />something <em>great</em>
+          Keling, birgalikda<br />ajoyib narsa <em>yarataylik</em>
         </h2>
         <p className="contact-sub">
-          Have a project in mind or just want to chat about design?
-          I'd love to hear from you.
+          Loyihangiz bormi yoki dizayn haqida suhbatlashmoqchimisiz?
+          Sizdan xabar olishdan xursand bo'laman.
         </p>
         <a href="mailto:hello@janedoe.design" className="contact-email">
           hello@janedoe.design
@@ -680,8 +680,7 @@ export default function App() {
 
       {/* FOOTER */}
       <footer>
-        <p>© 2026 Jane Doe. All rights reserved.</p>
-        <p>Designed & Built with ♥</p>
+        <p>© 2026 Usmonov Rayimbek. Barcha huquqlar himoyalangan.</p>
       </footer>
     </>
   );
